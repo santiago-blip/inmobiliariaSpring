@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div th:fragment="nav" class="container-nav"> 
+            <ul class="ulNav">
+                <li th:class="${#httpServletRequest.requestURI == '/' ? 'liNavActive':'liNav'}"><a th:href="@{/}" th:class="${#httpServletRequest.requestURI == '/' ? 'liNavaActive':'linava'}">Inicio</a></li>
+                <li>
+                    <form th:action="@{/buscadorSelect}" class="formBuscadorSelect" method="POST">
+                        <div>
+                            <select name="tipoInmueble" class="selects"> <!--th:field=”*{pais}” para validar en un campo y decirle a qué campo va la opción-->
+                                <option value="" selected="">¿Qué buscas?</option><!-- =>Vacío para poder validar. -->
+                                <option value="casa">Casa</option> <!--th:each=”pais : ${Lista}” th:text=”${pais}” th:value=”${pais}” por si es una lista de varias cosas que ya hay-->
+                                <option value="apartamento">Apartamento</option>
+                                <option value="apartaestudio">Apartaestudio</option>
+                            </select>
+                            <select name="tipoNegocio" class="selects"> 
+                                <option value="" selected="">Todo</option>
+                                <option value="venta" >Venta</option>
+                                <option value="arriendo">Arriendo</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" value="buscar" class="buscarSelects">
+                        </div>
+                    </form>
+                </li>
+                <li>
+                    <div class="divBuscadorTec">
+                        <input type="text" class="inputBuscadorTec" required id="findByCode">
+                        <label class="lblBuscadorTec">Buscar por código</label>
+                    </div>
+                </li>
+                <li th:class="${#httpServletRequest.requestURI == '/publicar' ? 'liNavActive':'liNav'}"><a th:href="@{/publicar}" th:class="${#httpServletRequest.requestURI == '/publicar' ? 'liNavaActive':'linava'}" sec:authorize="isAuthenticated()">Publicar venta</a></li>
+                <li th:class="${#httpServletRequest.requestURI == '/mis/publicaciones' ? 'liNavActive':'liNav'}"><a th:href="@{/mis/publicaciones}" th:class="${#httpServletRequest.requestURI == '/mis/publicaciones' ? 'liNavaActive':'linava'}" sec:authorize="isAuthenticated()">Mis publicaciones</a></li>
+                <li class="liNav" sec:authorize="!isAuthenticated()"><a class="linava" id="iniciarSession">Iniciar sesión</a></li>
+                <li class="liNav" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}">
+                        <input type="submit" name="logout" value="Cerrar sesión">
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <!----------------->
+        <!--MODAL SESION/REGISTRO-->
+        <!----------------->
+        <div th:fragment="modalSession" class="container-modalSession" id="containerModal">
+            <div class="modalSession" id="modalSession">
+                <form th:action="@{/login}" method="POST" class="formModalSession"> 
+                    <div class="divModalSession">
+                        <input type="text" name="username" class="inputLogin" id="username" required>
+                        <label for="username" class="lblModalSession">Usuario</label>
+                    </div>
+                    <div class="divModalSession">
+                        <input type="password" name="password" class="inputLogin" id="password" required>
+                        <label for="password" class="lblModalSession">Contraseña</label>
+                    </div>
+                    <div class="divbtnEnvModalSession">
+                        <input type="submit" value="Enviar" class="btnEnvModalSession">
+                        <a class="aModalSession" id="linkRegistro">Registrarse</a>
+                        <a class="aModalSession" id="linkContra">Recuperar contraseña</a>
+                    </div>
+                </form>
+            </div>
+            <!----------------->
+            <!--MODAL REGISTRO-->
+            <!----------------->   
+            <div class="modalRegistro" id="modalRegistro">
+                <form th:action="@{/registro}" method="POST" class="formModalRegistro" id="formRegistro"> 
+                    <div class="divModalRegistro">
+                        <input type="text" name="usernameR" class="inputRegistro" id="usernameRe" required>
+                        <label for="username" class="lblModalRegistro">Usuario</label>
+                        <label id="lblnombreErr"></label>
+                    </div>
+                    <div class="divModalRegistro">
+                        <input type="password" name="passwordR" class="inputRegistro" id="passwordRe" required>
+                        <label for="password" class="lblModalRegistro">Contraseña</label>
+                    </div>
+                    <div class="divbtnEnvModalRegistro">
+                        <input type="submit" value="Enviar" class="btnEnvModalRegistro">
+                        <a class="aModalRegistro" id="linkSession">Iniciar sesión</a>
+                    </div>
+                </form>
+            </div>
+            <!----------------->
+            <!--MODAL REGISTRO-->
+            <!----------------->
+            <!----------------->
+            <!--MODAL RECUPERAR CONTRASEÑA-->
+            <!----------------->
+            <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+            <div class="modalContraseña" id="modalContraseña">
+                <form th:action="@{/recuperar}" class="formContraseña" method="POST" >
+                    <div class="divILC">
+                        <input type="text" class="inputContraseña" required="" name="correoR" id="correoId">
+                        <label class="lblContraseña">Escriba el correo con el cual se registró.</label>
+                    </div>
+                    <input type="submit" value="Enviar" class="envContraseña">
+                </form>
+                <a class="aModalRegistro" id="linkSesion">Iniciar sesión</a>
+            </div>
+            <!----------------->
+            <!--MODAL RECUPERAR CONTRASEÑA-->
+            <!----------------->
+            <script th:src="@{js/modal.js}"></script>
+            <script th:src="@{js/modalForm.js}"></script>
+        </div>
+
+        <!----------------->
+        <!--MODAL SESION/REGISTRO-->
+        <!----------------->
+    </body>
+</html>

@@ -1,0 +1,74 @@
+.container-casa{
+    width: 50%;
+    padding: 5px;
+    margin-top: 150px; 
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #DEE2E6;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #DEE2E6;
+}
+.divForm{
+    margin: 20px;
+}
+.divForm input{
+    width: 300px;
+}
+.env{
+    padding: 5px;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: pointer;
+}
+.env:hover{
+    background-color: black;
+    color:white;
+}
+
+/*EDITAR*/
+.divFormImg{
+    display: flex;
+    flex-direction: column;
+}
+.divImgEd{
+    width: 100%;
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+}
+
+.imgEdit{
+    max-width: 100%;
+}
+
+.divFormImgV{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+.divImgEdV{
+    width: 400px;
+}
+.divtwoImg{
+    width: 100%;
+}
+.divCamV{
+    display: flex;
+    align-items: center;
+}
+.divCamV label{
+  margin-right: 10px;
+}
+.imgHouse{
+    text-align: center;
+    margin-top: 10px;
+}
+.hos{
+    margin: 50px auto 50px auto;
+}

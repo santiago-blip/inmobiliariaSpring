@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" th:href="@{/css/fragment.css}">
+        <link type="text/css" rel="stylesheet" th:href="@{/css/index.css}">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="layouts/fragment :: nav"></div>
+        <!----------------->
+        <!--CASAS-->        
+        <!----------------->
+        <div class="container-houses">
+            <div th:each="c : ${casas}">
+                <a th:href="@{/mis/casas/ver/}+${c.idCasa}" class="linkContainer">
+                    <div class="houses">
+                        <div class="divImg">
+                            <div class="contadorFotos"></div>
+                            <div class="divContainImg">
+                                <img class="imgDivCasa" th:src="@{/img/uploads/}+${c.rutaImg}">
+                            </div>
+                        </div>
+                        <div class="divinfo">
+                            <h3 th:text="${c.titulo}"></h3>
+                            <h4 th:text="${c.descripcion}"></h4>
+                            <p th:text="${c.precio}"></p>
+                            <p>Código: [[${c.idCasa}]]</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!--SWEET ALERT-->
+        <script th:if="${delete != null}">swal("¡Casa eliminada!", "Se ha eliminado exitosamente la casa", "success");</script> 
+    </body>
+</html>

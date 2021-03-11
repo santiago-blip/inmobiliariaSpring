@@ -1,0 +1,47 @@
+.container-houses{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.houses{
+    width: 700px;
+    height: 250px;
+    border: 1px solid #DEE2E6;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #DEE2E6;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.divImg{
+    width: 100%;
+    padding: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contadorFotos{
+    position: absolute;
+}
+.imgDivCasa{
+    max-height: 100%;
+    max-width: 100%;
+}
+.divinfo{
+    padding: 5px;
+}
+.divinfo h3{
+    margin-top: 10px;
+}
+.divinfo h4{
+    margin-top: 20px;
+}
+.divinfo p{
+    margin-top: 25px;
+}
+.linkContainer{
+    text-decoration: none;
+    color: black;
+}

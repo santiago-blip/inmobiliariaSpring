@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" th:href="@{css/recuperar.css}">
+    </head>
+    <body>
+        <div th:if="${CodeValido != null}" class="containvalid">
+            <div class="valid">
+                <form th:action="@{/cambiar}" method="POST">
+                    <input type="hidden" th:value="${correo}" name="correo">
+                    <div class="divForRC">
+                        <input type="password" name="pass" required="" class="inputRC">
+                        <label class="lblRC">Escribir contraseña nueva.</label>
+                    </div>
+                    <input type="submit" class="envRC">
+                </form>
+            </div>
+        </div>
+        <div th:if="${CodeNoValido != null}" class="invalid">
+            <h1>El código no es válido, debe generar otro.</h1>
+            <a th:href="@{/}">Regresar</a>
+        </div>
+    </body>
+</html>

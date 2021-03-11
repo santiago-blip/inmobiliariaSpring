@@ -1,0 +1,322 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.container-nav{
+    width: 100%;
+    border: 1px solid #DEE2E6;
+    box-shadow: 0px 0px 5px #DEE2E6;
+    height: 70px;
+}
+.ulNav{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.linava{
+    text-decoration: none;
+    color: black;
+}
+.liNav{
+    overflow: hidden;
+    cursor: pointer;
+}
+.liNav:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transition: transform .3s;
+    transform: translateX(-110%);
+}
+.liNav:hover:after{
+    background-color: #DEE2E6;
+    transform: translateX(0)
+}
+.liNav:hover .linava{
+    color: #DEE2E6;
+}
+.liNavaActive{
+    color: #DEE2E6;
+    text-decoration: none;
+}
+.liNavActive:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #DEE2E6;
+}
+.liNavActive:hover .liNavaActive{
+    color: gray;
+}
+.liNavActive:hover:after{
+    background-color: gray;
+}
+/*form nav*/
+.formBuscadorSelect{
+    display: flex;
+    align-items: center;
+}
+.selects{
+    padding: 5px;
+}
+.buscarSelects{
+    padding: 5px;
+    border: 1px solid #DEE2E6;
+    background-color: white;
+    color: #DEE2E6;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.buscarSelects:hover{
+    background-color: black;
+    color: #DEE2E6;
+}
+/*Buscador teclado*/
+.divBuscadorTec{
+    position: relative;
+}
+.lblBuscadorTec{
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+.inputBuscadorTec{
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #DEE2E6;
+}
+.inputBuscadorTec:focus ~.lblBuscadorTec,
+.inputBuscadorTec:valid ~.lblBuscadorTec{
+    transform: translateY(-105%);
+    font-size: 13px;
+}
+
+/***************************************************************/
+/*MODAL SESSION*/
+/***************************************************************/
+.container-modalSession{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    z-index: 1;
+}
+.modalSession{
+    width: 350px;
+    border: 1px solid #DEE2E6;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #DEE2E6;
+    transform: translateY(-350%);
+    transition: transform .3s;
+    position: absolute;
+}
+.formModalSession{
+}
+.divModalSession{
+    padding: 15px;
+    position: relative;
+}
+.inputLogin{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #DEE2E6;
+    padding: 5px;
+    margin-top:10px; 
+    width: 300px;
+}
+.lblModalSession{
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    transition: transform .1s;
+}
+.inputLogin:focus ~.lblModalSession,
+.inputLogin:valid ~.lblModalSession{
+    transform: translateY(-150%);
+    font-size: 12px;
+}
+.divbtnEnvModalSession{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 10px;
+}
+.btnEnvModalSession{
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 60px;
+}
+.btnEnvModalSession:hover{
+    background-color: black;
+    color: #DEE2E6;
+}
+.aModalSession{
+    margin-top: 10px;
+    cursor: pointer;
+}
+.aModalSession:hover{
+    color: #DEE2E6;
+}
+
+/***************************************************************/
+/*MODAL SESSION*/
+/***************************************************************/
+
+/***************************************************************/
+/*MODAL REGRISTRO*/
+/***************************************************************/
+.modalRegistro{
+    width: 350px;
+    border: 1px solid #DEE2E6;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #DEE2E6;
+    position: absolute;
+    transform: translateY(-350%);
+    transition: transform .3s;
+}
+.divModalRegistro{
+    padding: 15px;
+    position: relative;
+}
+.inputRegistro{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #DEE2E6;
+    padding: 5px;
+    margin-top:10px; 
+    width: 300px;
+}
+.lblModalRegistro{
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    transition: transform .1s;
+}
+.inputRegistro:focus ~.lblModalRegistro,
+.inputRegistro:valid ~.lblModalRegistro{
+    transform: translateY(-150%);
+    font-size: 12px;
+}
+.divbtnEnvModalRegistro{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 10px;
+}
+.btnEnvModalRegistro{
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 60px;
+}
+.btnEnvModalRegistro:hover{
+    background-color: black;
+    color: #DEE2E6;
+}
+.aModalRegistro{
+    margin-top: 10px;
+    cursor: pointer;
+}
+.aModalRegistro:hover{
+    color: #DEE2E6;
+}
+
+
+/***************************************************************/
+/*MODAL REGRISTRO*/
+/***************************************************************/
+
+/*MODAL CONTRASEÑA*/
+.modalContraseña{
+    width: 350px;
+    height: 150px;
+    border: 1px solid #DEE2E6;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #DEE2E6;
+    position: absolute;
+    transform: translateY(-390%);
+    transition: transform .3s;
+    padding: 10px;
+    text-align: center;
+}
+.inputContraseña{
+    outline: none;
+    border: none;
+    border-bottom:1px solid #DEE2E6;
+    padding: 5px;
+    margin-top: 20px;
+    width: 100%;
+}
+.divILC{
+    position: relative;
+}
+.lblContraseña{
+    position: absolute;
+    left: 0;
+    top: 28px;
+}
+.inputContraseña:focus ~ .lblContraseña,
+.inputContraseña:valid ~ .lblContraseña{
+    transform: translateY(-120%);
+    font-size: 13px;
+}
+.envContraseña{
+    padding: 5px;
+    background-color: white;
+    border-color: black;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.envContraseña:hover{
+    color: white;
+    background-color: black;
+}
+/*MODAL CONTRASEÑA*/
+.container-modalActive{
+    visibility: visible;
+}
+.modalVisible{
+    transform: translateY(0);
+}
+
+.carousel,.myrow{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.divInTip{
+    display: flex;
+}
+.divInTip h2{
+    margin: 10px;
+}
+.divInTip a{
+    margin: 10px;
+}

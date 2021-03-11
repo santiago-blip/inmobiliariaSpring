@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" th:href="@{css/fragment.css}">
+        <link type="text/css" rel="stylesheet" th:href="@{css/index.css}">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="layouts/fragment :: nav"></div>
+        <!----------------->
+        <!--MODAL SESION-->        
+        <!----------------->
+        <div th:replace="layouts/fragment :: modalSession"></div>
+
+        <!----------------->
+        <!--CASAS-->        
+        <!----------------->
+
+        <div class="container-houses">
+            <div th:each="c : ${casas}">
+                <a th:href="@{/mis/casas/}+${c.idCasa}" class="linkContainer">
+                    <div class="houses">
+                        <div class="divImg">
+                            <div class="contadorFotos"></div>
+                            <div class="divContainImg">
+                                <img class="imgDivCasa" th:src="@{/img/uploads/}+${c.rutaImg}">
+                            </div>
+                        </div>
+                        <div class="divinfo">
+                            <h3 th:text="${c.titulo}"></h3>
+                            <h4 th:text="${c.descripcion}"></h4>
+                            <p th:text="${c.precio}"></p>
+                            <p>Código: [[${c.idCasa}]]</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!--SWEET ALERT-->
+        <script th:if="${userExist != null}">swal("¡Usuario existente!", "Ya hay un usuario creado con la dirección de correo electrónico que digitó.", "error");</script> 
+        <script th:if="${registroExitoso != null}">swal("¡Registro exitoso!", "Su cuenta fue creada con éxito, por favor revisar su correo para verificar su cuenta.", "success");</script> 
+        <script th:if="${recuperar != null}">swal("¡Corre enviado!", "Se ha enviado el link para recuperar la contraseña a su correo.", "success");</script> 
+        <script th:if="${recuperarNo != null}">swal("¡Error al recuperar contraseña!", "No se pudo enviar el correo, asegúrese de que el correo digitado es correcto.", "error");</script> 
+        <script th:if="${cambiada != null}">swal("¡Contraseña cambiada!", "Se ha cambiado exitosamente la contraseña", "success");</script> 
+
+        <!--JQUERY-->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script th:src="@{js/modalForm.js}"></script>
+        <!--Buscador-->
+        <script th:src="@{js/buscador.js}"></script> 
+    </body>
+</html>

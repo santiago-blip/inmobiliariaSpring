@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" th:href="@{css/fragment.css}">
+        <link type="text/css" rel="stylesheet" th:href="@{css/publicar.css}">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </head>
+    <body>
+
+        <!--NAV-->
+        <div th:replace="layouts/fragment :: nav"></div>
+
+        <!--ADD CASA-->
+        <div class="container-casa">
+            <form th:object="${casa}" method="POST" th:action="@{/publicar}" enctype="multipart/form-data" class="form">
+                <div class="divForm">
+                    <label>Titulo de la casa: </label>
+                    <input th:field="*{titulo}" type="text">
+                    <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></span>
+                </div>
+                <div class="divForm">
+                    <label>Descripción, #habitaciones, metros cúbicos, etc: </label>
+                    <input th:field="*{descripcion}" type="text">
+                    <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></span>
+                </div>
+                <div class="divForm">
+                    <label>tipoInmueble: </label>
+                    <select th:field="*{tipoInmueble}">
+                        <option value="Casa">Casa</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Bodega">Bodega</option>
+                        <option value="apartaestudio">apartaestudio</option>
+                        <option value="local">local</option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('tipoInmueble')}" th:errors="*{tipoInmueble}"></span>
+                </div>
+                <div class="divForm">
+                    <label>Es para:</label>
+                    <select th:field="*{arriendoVenta}">
+                        <option value="Arriendo">Arriendo</option>
+                        <option value="Venta">Venta</option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('arriendoVenta')}" th:errors="*{arriendoVenta}"></span>
+                </div>
+                <div class="divForm">
+                    <label>valor de la casa: </label>
+                    <input th:field="*{precio}" type="text">
+                    <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span>
+                </div>
+                <div class="divForm">
+                    <label>imagen principal de la casa: </label>
+                    <input name="file" type="file">
+                </div>
+                <div class="divForm">
+                    <label>imágenes de la casa: </label>
+                    <input name="files" type="file" multiple>
+                </div>
+                <input type="submit" class="env" value="Enviar">
+            </form>
+        </div>
+        
+        <!--SWEET ALERT-->
+        <script th:if="${creada != null}">swal("¡Casa publicada!", "Se ha publicado exitosamente la casa", "success");</script> 
+    </body>
+</html>

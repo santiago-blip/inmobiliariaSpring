@@ -1,0 +1,50 @@
+.new{
+    margin:150px auto 0px auto;
+    width: 20%;
+    color:white;
+    padding: 10px;
+    height: 150px;
+    background-color: greenyellow;
+    text-align: center;
+    border-radius:10px;
+    box-shadow: 0px 0px 5px #DEE26E;
+}
+.new a{
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    border:1px solid white;
+    background-color: greenyellow;
+    color:white;
+}
+.new a:hover{
+     background-color: white;
+     color: greenyellow;
+     border-color: greenyellow;
+}
+.old{
+    margin:150px auto 0px auto;
+    width: 20%;
+    padding: 10px;
+    height: 100px;
+    background-color: red;
+    text-align: center;
+    border-radius:10px;
+    box-shadow: 0px 0px 5px black;
+}
+.old h1{
+    color:white;
+}
+.old a{
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    border:1px solid white;
+    background-color: red;
+    color:white;
+}
+.old a:hover{
+     background-color: white;
+     color: red;
+     border-color: red;
+}
